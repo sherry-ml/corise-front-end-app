@@ -42,11 +42,11 @@ def main():
 
         with col3:
             st.subheader("Podcast Guest")
-            st.write(podcast_info['podcast_guest']['name'])
+            st.write(podcast_info['podcast_guest'])
 
         with col4:
             st.subheader("Podcast Guest Details")
-            st.write(podcast_info["podcast_guest"]['summary'])
+            st.write(podcast_info["podcast_guest"])
 
         # Display the five key moments
         st.subheader("Key Moments")
@@ -90,11 +90,11 @@ def main():
 
         with col3:
             st.subheader("Podcast Guest")
-            st.write(podcast_info['podcast_guest']['name'])
+            st.write(podcast_info['podcast_guest'])
 
         with col4:
             st.subheader("Podcast Guest Details")
-            st.write(podcast_info["podcast_guest"]['summary'])
+            st.write(podcast_info["podcast_guest"])
 
         # Display the five key moments
         st.subheader("Key Moments")
@@ -118,8 +118,9 @@ def create_dict_from_json_files(folder_path):
     return data_dict
 
 def process_podcast_info(url):
+    n = 0
     f = modal.Function.lookup("corise-podcast-project", "process_podcast")
-    output = f.call(url, '/content/podcast/')
+    output = f.call(url, '/content/podcast/', n)
     return output
 
 if __name__ == '__main__':
